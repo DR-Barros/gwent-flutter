@@ -12,7 +12,6 @@ class RainState implements AbstractCardState{
     _card = card;
   }
 
-  @override
   void _changeState(AbstractCardState state) {
     if (_card != null) {
       _card!.setState( state );

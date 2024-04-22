@@ -1,4 +1,6 @@
 import 'package:gwent/models/cards/corp_card.dart';
+import 'package:gwent/models/cards/distance_card.dart';
+import 'package:gwent/models/cards/siege_card.dart';
 
 class BoardSection {
   List<CorpCard> corp = [];
@@ -22,9 +24,17 @@ class BoardSection {
 
   /// returns the total strength of the board section
   int getStrength() {
-    return corp.fold(0, (previousValue, element) => previousValue + element.getStrength()) +
-        distance.fold(0, (previousValue, element) => previousValue + element.getStrength()) +
-        siege.fold(0, (previousValue, element) => previousValue + element.getStrength());
+    int strength = 0;
+    for (CorpCard c in corp){
+      strength += c.getStrength();
+    }
+    for (DistanceCard c in distance){
+      strength += c.getStrength();
+    }
+    for (SiegeCard c in siege){
+      strength += c.getStrength();
+    }
+    return strength;
   }
 
   /// list of all the cards in the section corp
@@ -51,61 +61,91 @@ class BoardSection {
   }
 
   /// applies the bond effect to the card in the corp section that has the same name
-  void applyBondEffect(CorpCard card) {
-    corp.where((c) => c.name == card.name).forEach((c) => c.doubleStrength());
+  void applyBondEffectCorp(CorpCard card) {
+    corp.where((c) => c.getName() == card.getName()).forEach((c) => c.doubleStrength());
   }
 
   /// applies the bond effect to the card in the distance section that has the same name
   void applyBondEffectDistance(DistanceCard card) {
-    distance.where((c) => c.name == card.name).forEach((c) => c.doubleStrength());
+    distance.where((c) => c.getName() == card.getName()).forEach((c) => c.doubleStrength());
   }
 
 
   /// applies the bond effect to the card in the siege section that has the same name
   void applyBondEffectSiege(SiegeCard card) {
-    siege.where((c) => c.name == card.name).forEach((c) => c.doubleStrength());
+    siege.where((c) => c.getName() == card.getName()).forEach((c) => c.doubleStrength());
   }
 
   /// applies the moral effect to the all cards in the corp section
   void applyMoralEffectCorp() {
-    corp.forEach((c) => c.moreStrength());
+    for (CorpCard c in corp){
+      c.moreStrength();
+    }
   }
 
   /// applies the moral effect to the all cards in the distance section
   void applyMoralEffectDistance() {
-    distance.forEach((c) => c.moreStrength());
+    for (DistanceCard c in distance){
+      c.moreStrength();
+    }
   }
 
   /// applies the moral effect to the all cards in the siege section
   void applyMoralEffectSiege() {
-    siege.forEach((c) => c.moreStrength());
+    for (SiegeCard c in siege){
+      c.moreStrength();
+    }
   }
 
   /// clear the weather effect from the board section
   void clearWeatherEffect() {
-    corp.forEach((c) => c.clearWeatherEffect());
-    distance.forEach((c) => c.clearWeatherEffect());
-    siege.forEach((c) => c.clearWeatherEffect());
+    for (CorpCard c in corp){
+      c.clearWeatherEffect();
+    }
+    for (DistanceCard c in distance){
+      c.clearWeatherEffect();
+    }
+    for (SiegeCard c in siege){
+      c.clearWeatherEffect();
+    }
   }
 
   /// applies the fog effect to the board section
   void applyFogEffect() {
-    corp.forEach((c) => c.applyFogEffect());
-    distance.forEach((c) => c.applyFogEffect());
-    siege.forEach((c) => c.applyFogEffect());
+    for (CorpCard c in corp){
+      c.applyFogEffect();
+    }
+    for (DistanceCard c in distance){
+      c.applyFogEffect();
+    }
+    for (SiegeCard c in siege){
+      c.applyFogEffect();
+    }
   }
 
   /// applies the rain effect to the board section
   void applyRainEffect() {
-    corp.forEach((c) => c.applyRainEffect());
-    distance.forEach((c) => c.applyRainEffect());
-    siege.forEach((c) => c.applyRainEffect());
+    for (CorpCard c in corp){
+      c.applyRainEffect();
+    }
+    for (DistanceCard c in distance){
+      c.applyRainEffect();
+    }
+    for (SiegeCard c in siege){
+      c.applyRainEffect();
+    }
   }
 
   /// applies the frost effect to the board section
   void applyFrostEffect() {
-    corp.forEach((c) => c.applyFrostEffect());
-    distance.forEach((c) => c.applyFrostEffect());
-    siege.forEach((c) => c.applyFrostEffect());
+    for (CorpCard c in corp){
+      c.applyFrostEffect();
+    }
+    for (DistanceCard c in distance){
+      c.applyFrostEffect();
+    }
+    for (SiegeCard c in siege){
+      c.applyFrostEffect();
+    }
   }
 }

@@ -1,6 +1,9 @@
 import 'package:gwent/models/board/board_section.dart';
 import 'package:gwent/models/cards/card.dart';
 import 'package:gwent/models/cards/weather_card.dart';
+import 'package:gwent/models/cards/corp_card.dart';
+import 'package:gwent/models/cards/distance_card.dart';
+import 'package:gwent/models/cards/siege_card.dart';
 
 class Board{
   final BoardSection section1 = BoardSection(); // the board section of player 1

@@ -1,7 +1,6 @@
 import 'package:gwent/models/cards/abstract_unit_card.dart';
 abstract class AbstractCardState {
   void setCard(AbstractUnitCard card);
-  void _changeState(AbstractCardState state);
   void clearWeatherEffect();
   void applyFrostEffect();
   void applyFogEffect();

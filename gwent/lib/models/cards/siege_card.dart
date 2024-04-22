@@ -1,18 +1,18 @@
-import 'package:gwent/models/cards/abstract_unit_card.dart';
-import 'package:gwent/models/cards/states/abstract_card_state.dart';
-import 'package:gwent/models/cards/weather_card.dart';
 import 'package:gwent/models/board/board.dart';
 import 'package:gwent/models/board/board_section.dart';
+import 'package:gwent/models/cards/abstract_unit_card.dart';
 import 'package:gwent/models/cards/effects/unit_effect.dart';
+import 'package:gwent/models/cards/states/abstract_card_state.dart';
 import 'package:gwent/models/cards/states/clear_state.dart';
+import 'package:gwent/models/cards/weather_card.dart';
 
-class CorpCard implements AbstractUnitCard{
+class SiegeCard implements AbstractUnitCard{
   final String _name;
   int _strength;
   final UnitEffect _effect;
   AbstractCardState _state = ClearState();
-  
-  CorpCard(this._name, this._strength, this._effect){
+
+  SiegeCard(this._name, this._strength, this._effect){
     _state.setCard(this);
   }
 
@@ -28,10 +28,10 @@ class CorpCard implements AbstractUnitCard{
     return _strength;
   }
 
-  /// return the type of the card
+  /// return the type of the card 
   @override
   String getCardType() {
-    return 'Corp';
+    return 'Asedio';
   }
 
   /// prints the card
@@ -43,7 +43,7 @@ class CorpCard implements AbstractUnitCard{
   /// assigns the card to a zone
   @override
   void assignZone(BoardSection section, List<WeatherCard> weather) {
-    section.addCorp(this);
+    section.addSiege(this);
   }
 
   /// applies the card effect to the board
@@ -58,7 +58,7 @@ class CorpCard implements AbstractUnitCard{
     _strength *= 2;
   }
 
-  /// increases the strength of the card
+  /// more strength to the card
   @override
   void moreStrength() {
     _strength += 1;
@@ -67,9 +67,9 @@ class CorpCard implements AbstractUnitCard{
   /// applies the bond effect of the card if exists a card with the same name in the board section
   @override
   void applyBondEffect(BoardSection boardSection) {
-    final List<CorpCard> corp = boardSection.getCorp();
+    final List<SiegeCard> cards = boardSection.getSiege();
     bool found = false;
-    for (CorpCard card in corp) {
+    for (SiegeCard card in cards) {
       if (card.getName() == _name) {
         found = true;
         break;
@@ -77,14 +77,14 @@ class CorpCard implements AbstractUnitCard{
     }
     if (found) {
       doubleStrength();
-      boardSection.applyBondEffectCorp(this);
+      boardSection.applyBondEffectSiege(this);
     }
   }
 
-  /// applies the moral effect to all the cards in the corp section
+  /// applies the moral effect to all the cards in the siege section
   @override
   void applyMoralEffect(BoardSection boardSection) {
-    boardSection.applyMoralEffectCorp();
+    boardSection.applyMoralEffectDistance();
   }
 
   /// sets the state of the card
@@ -93,6 +93,7 @@ class CorpCard implements AbstractUnitCard{
     _state = state;
     _state.setCard(this);
   }
+
 
   /// clears the weather effect of the card
   @override
@@ -145,7 +146,7 @@ class CorpCard implements AbstractUnitCard{
   /// returns if the cards are equal
   @override
   bool operator ==(Object other) {
-    if (other is CorpCard) {
+    if (other is SiegeCard) {
       return _name == other.getName() && _strength == other.getStrength();
     }
     return false;
