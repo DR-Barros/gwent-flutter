@@ -18,6 +18,10 @@ abstract class AbstractPlayer implements Subject {
 
   int getNumberOfUnitCards();
 
+  int getUnitCardIndex();
+
+  int getWeatherCardIndex();
+
   void stealCard();
 
   ModelCard playCard(int index);

@@ -1,8 +1,18 @@
 import 'package:gwent/controller/states/abstract_state_controller.dart';
+import 'package:gwent/models/board/board.dart';
+import 'package:gwent/models/observer/observer.dart';
 import 'package:gwent/models/observer/subject.dart';
+import 'package:gwent/models/players/abstract_player.dart';
 
 abstract class AbstractController {
   void setState(AbstractStateController aState);
+  void assignPlayer1(AbstractPlayer player);
+  void assignPlayer2(AbstractPlayer player);
+  void assignObserver(Observer o);
+  void assignBoard(Board board);
+  Board getBoard();
+  AbstractPlayer getPlayer1();
+  AbstractPlayer getPlayer2();
   bool getIsFinish();
   void resetGame();
   void loose(Subject o);

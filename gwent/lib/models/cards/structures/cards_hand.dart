@@ -50,7 +50,6 @@ class CardsHand {
   }
 
   /// returns the number of weather cards in the hand
-  /// returns -1 if there are no weather cards
   int getNumberOfWeatherCards() {
     int count = 0;
     for (ModelCard card in _cards) {
@@ -58,11 +57,10 @@ class CardsHand {
         count++;
       }
     }
-    return count == 0 ? -1 : count;
+    return count;
   }
 
   /// returns the number of unit cards in the hand
-  /// returns -1 if there are no unit cards
   int getNumberOfUnitCards() {
     int count = 0;
     for (ModelCard card in _cards) {
@@ -70,6 +68,28 @@ class CardsHand {
         count++;
       }
     }
-    return count == 0 ? -1 : count;
+    return count;
+  }
+
+  /// returns the index of the first unit card in the hand
+  /// returns -1 if there are no unit cards in the hand
+  int getUnitCardIndex() {
+    for (int i = 0; i < _cards.length; i++) {
+      if (_cards[i] is AbstractUnitCard){
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  /// returns the index of the first weather card in the hand
+  /// returns -1 if there are no weather cards in the hand
+  int getWeatherCardIndex() {
+    for (int i = 0; i < _cards.length; i++) {
+      if (_cards[i] is WeatherCard){
+        return i;
+      }
+    }
+    return -1;
   }
 }

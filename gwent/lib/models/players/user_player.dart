@@ -57,6 +57,16 @@ class UserPlayer implements AbstractPlayer{
   }
 
   @override
+  int getUnitCardIndex() {
+    return _hand.getUnitCardIndex();
+  }
+
+  @override
+  int getWeatherCardIndex() {
+    return _hand.getWeatherCardIndex();
+  }
+
+  @override
   void stealCard() {
     if(handSize() < 10){
       _hand.addCard(_deck.stealCard());
@@ -76,7 +86,7 @@ class UserPlayer implements AbstractPlayer{
   @override
   void notifyObservers(dynamic response) {
     for (Observer observer in _observers){
-      observer.update(response);
+      observer.update(this, response);
     }
   }
 

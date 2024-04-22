@@ -1,29 +1,37 @@
 import 'package:gwent/controller/abstract_controller.dart';
 
 abstract class AbstractStateController {
-  void setController(AbstractController controller);
-  void changeState(State state); 
+  AbstractController? controller;
+  void setController(AbstractController controller){
+    this.controller = controller;
+  }
+  void changeState(AbstractStateController state){
+    controller!.setState(state);
+  }
   void handle();
-  void start();
-  void roundInit();
-  void player1Turn();
-  void player2Turn();
-  void playCardP1();
-  void playCardP2();
-  void playCardsP1();
-  void playCardsP2();
-  void finishRound();
-  void nextRound();
-  void finishGame();
-  bool isStart();
-  bool isRoundInit();
-  bool isPlayer1Turn();
-  bool isPlayer2Turn();
-  bool isPlayCardP1();
-  bool isPlayCardP2();
-  bool isPlayCardsP1();
-  bool isPlayCardsP2();
-  bool isFinishRound();
-  bool isNextRound();
-  bool isFinishGame();
+  void _error(){
+    throw Exception("Wrong state");
+  }
+  void start() => _error();
+  void roundInit() => _error();
+  void player1Turn() => _error();
+  void player2Turn() => _error();
+  void playCardP1() => _error();
+  void playCardP2() => _error();
+  void playCardsP1() => _error();
+  void playCardsP2() => _error();
+  void finishRound() => _error();
+  void nextRound() => _error();
+  void finishGame() => _error();
+  bool isStart() => false;
+  bool isRoundInit() => false;
+  bool isPlayer1Turn() => false;
+  bool isPlayer2Turn() => false;
+  bool isPlayCardP1() => false;
+  bool isPlayCardP2() => false;
+  bool isPlayCardsP1() => false;
+  bool isPlayCardsP2() => false;
+  bool isFinishRound() => false;
+  bool isNextRound() => false;
+  bool isFinishGame() => false;
 }
