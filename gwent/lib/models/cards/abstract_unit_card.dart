@@ -1,4 +1,4 @@
-import 'package:gwent/models/boards/board_section.dart';
+import 'package:gwent/models/board/board_section.dart';
 import 'package:gwent/models/cards/card.dart';
 abstract class AbstractUnitCard implements ModelCard{
 
@@ -10,7 +10,7 @@ abstract class AbstractUnitCard implements ModelCard{
 
   void applyBondEffect(BoardSection boardSection);
 
-  void applyMoraleEffect(BoardSection boardSection);
+  void applyMoralEffect(BoardSection boardSection);
 
   void setState(CardState state);
 

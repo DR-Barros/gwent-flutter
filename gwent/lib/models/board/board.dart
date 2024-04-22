@@ -1,4 +1,4 @@
-import 'package:gwent/models/boards/board_section.dart';
+import 'package:gwent/models/board/board_section.dart';
 import 'package:gwent/models/cards/card.dart';
 import 'package:gwent/models/cards/weather_card.dart';
 
@@ -63,7 +63,7 @@ class Board{
     return section2.getSiege();
   }
 
-  /// retuns the weather cards on the board
+  /// returns the weather cards on the board
   List<WeatherCard> getWeather(){
     return weather;
   }

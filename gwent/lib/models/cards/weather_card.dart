@@ -1,6 +1,7 @@
-import 'package:gwent/models/boards/board_section.dart';
-import 'package:gwent/models/boards/board.dart';
+import 'package:gwent/models/board/board_section.dart';
+import 'package:gwent/models/board/board.dart';
 import 'package:gwent/models/cards/card.dart';
+import 'package:gwent/models/cards/effects/weather_effect.dart';
 
 class WeatherCard implements ModelCard{
   final String name;
@@ -39,7 +40,7 @@ class WeatherCard implements ModelCard{
   /// applies the card effect to the board
   @override
   void apply(Board board, BoardSection boardSection) {
-    effect.apply(board, boardSection);
+    effect.apply(board);
   }
 
   /// Hashcode for the card

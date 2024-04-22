@@ -1,5 +1,5 @@
-import 'package:gwent/models/boards/board_section.dart';
-import 'package:gwent/models/boards/board.dart';
+import 'package:gwent/models/board/board_section.dart';
+import 'package:gwent/models/board/board.dart';
 import 'package:gwent/models/cards/weather_card.dart';
 
 /// this is a card class

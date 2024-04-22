@@ -1,4 +1,4 @@
-
+import 'package:gwent/models/cards/corp_card.dart';
 
 class BoardSection {
   List<CorpCard> corp = [];
@@ -20,7 +20,7 @@ class BoardSection {
     siege.add(card);
   }
 
-  /// obtens the total strength of the board section
+  /// returns the total strength of the board section
   int getStrength() {
     return corp.fold(0, (previousValue, element) => previousValue + element.getStrength()) +
         distance.fold(0, (previousValue, element) => previousValue + element.getStrength()) +
@@ -66,18 +66,18 @@ class BoardSection {
     siege.where((c) => c.name == card.name).forEach((c) => c.doubleStrength());
   }
 
-  /// applies the morale effect to the all cards in the corp section
-  void applyMoraleEffectCorp() {
+  /// applies the moral effect to the all cards in the corp section
+  void applyMoralEffectCorp() {
     corp.forEach((c) => c.moreStrength());
   }
 
-  /// applies the morale effect to the all cards in the distance section
-  void applyMoraleEffectDistance() {
+  /// applies the moral effect to the all cards in the distance section
+  void applyMoralEffectDistance() {
     distance.forEach((c) => c.moreStrength());
   }
 
-  /// applies the morale effect to the all cards in the siege section
-  void applyMoraleEffectSiege() {
+  /// applies the moral effect to the all cards in the siege section
+  void applyMoralEffectSiege() {
     siege.forEach((c) => c.moreStrength());
   }
 
