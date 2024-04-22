@@ -3,7 +3,7 @@ import 'package:gwent/models/cards/card.dart';
 import 'package:gwent/models/cards/weather_card.dart';
 
 class CardsHand {
-  List<ModelCard> _cards = [];
+  final List<ModelCard> _cards = [];
 
   /// returns the number of cards in the hand
   int handSize() {
@@ -51,10 +51,22 @@ class CardsHand {
 
   /// returns the number of weather cards in the hand
   /// returns -1 if there are no weather cards
-  int getNumberofWeatherCards() {
+  int getNumberOfWeatherCards() {
     int count = 0;
     for (ModelCard card in _cards) {
       if (card is WeatherCard){
+        count++;
+      }
+    }
+    return count == 0 ? -1 : count;
+  }
+
+  /// returns the number of unit cards in the hand
+  /// returns -1 if there are no unit cards
+  int getNumberOfUnitCards() {
+    int count = 0;
+    for (ModelCard card in _cards) {
+      if (card is AbstractUnitCard){
         count++;
       }
     }

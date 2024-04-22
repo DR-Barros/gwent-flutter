@@ -4,6 +4,7 @@ import 'package:gwent/models/cards/weather_card.dart';
 import 'package:gwent/models/cards/corp_card.dart';
 import 'package:gwent/models/cards/distance_card.dart';
 import 'package:gwent/models/cards/siege_card.dart';
+import 'package:gwent/models/players/abstract_player.dart';
 
 class Board{
   final BoardSection section1 = BoardSection(); // the board section of player 1
@@ -12,14 +13,14 @@ class Board{
   Board();
 
   /// plays a card on the board section of the player 1
-  void playCardPlayer1(Player player, int index){
+  void playCardPlayer1(AbstractPlayer player, int index){
     final ModelCard card = player.playCard(index);
     card.apply(this, section1);
     card.assignZone(section1, weather);
   }
 
   /// plays a card on the board section of the player 2
-  void playCardPlayer2(Player player, int index){
+  void playCardPlayer2(AbstractPlayer player, int index){
     final ModelCard card = player.playCard(index);
     card.apply(this, section2);
     card.assignZone(section2, weather);

@@ -1,7 +1,7 @@
 import 'package:gwent/models/cards/card.dart';
 
 class Deck {
-  List<ModelCard> _cards;
+  final List<ModelCard> _cards;
 
   Deck(this._cards){
     _cards.shuffle(); // shuffle the deck
