@@ -1,5 +1,6 @@
 import 'package:gwent/models/board/board_section.dart';
 import 'package:gwent/models/cards/card.dart';
+import 'package:gwent/models/cards/states/abstract_card_state.dart';
 abstract class AbstractUnitCard implements ModelCard{
 
   int getStrength();
@@ -12,7 +13,7 @@ abstract class AbstractUnitCard implements ModelCard{
 
   void applyMoralEffect(BoardSection boardSection);
 
-  void setState(CardState state);
+  void setState(AbstractCardState state);
 
   void clearWeatherEffect();
 

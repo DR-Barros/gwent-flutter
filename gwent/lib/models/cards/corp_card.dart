@@ -1,16 +1,20 @@
 import 'package:gwent/models/cards/abstract_unit_card.dart';
+import 'package:gwent/models/cards/states/abstract_card_state.dart';
 import 'package:gwent/models/cards/weather_card.dart';
 import 'package:gwent/models/board/board.dart';
 import 'package:gwent/models/board/board_section.dart';
 import 'package:gwent/models/cards/effects/unit_effect.dart';
+import 'package:gwent/models/cards/states/clear_state.dart';
 
 class CorpCard implements AbstractUnitCard{
   final String _name;
   int _strength;
   final UnitEffect _effect;
-  CardState _state = ClearState();
-  _state.setCard(this);
-  CorpCard(this._name, this._strength, this._effect);
+  AbstractCardState _state = ClearState();
+  
+  CorpCard(this._name, this._strength, this._effect){
+    _state.setCard(this);
+  }
 
   /// returns the name of the card
   @override
@@ -84,7 +88,7 @@ class CorpCard implements AbstractUnitCard{
 
   /// sets the state of the card
   @override
-  void setState(CardState state) {
+  void setState(AbstractCardState state) {
     _state = state;
     _state.setCard(this);
   }
