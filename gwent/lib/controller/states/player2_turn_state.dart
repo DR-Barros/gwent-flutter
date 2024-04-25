@@ -1,7 +1,7 @@
 import 'package:gwent/controller/states/abstract_state_controller.dart';
+import 'package:gwent/controller/states/play_cards_p1_state.dart';
 import 'package:gwent/models/players/abstract_player.dart';
 import 'package:gwent/controller/states/play_card_p2_state.dart';
-import 'package:gwent/controller/states/play_cards_p1_state.dart';
 
 class Player2TurnState extends AbstractStateController{
   @override
@@ -20,14 +20,10 @@ class Player2TurnState extends AbstractStateController{
   }
 
   @override
-  void playCardP2(){
-    changeState(PlayCardP2State());
-  }
+  void playCardP2() => changeState(PlayCardP2State());
 
   @override
-  void playCardsP1(){
-    changeState(PlayCardsP1State());
-  }
+  void playCardsP1() => changeState(PlayCardsP1State());
 
   @override
   bool isPlayer2Turn() => true;

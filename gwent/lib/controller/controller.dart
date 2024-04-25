@@ -26,6 +26,41 @@ class Controller implements AbstractController{
   }
 
   @override
+  void assignPlayer1(AbstractPlayer player) {
+    player1 = player;
+  }
+
+  @override
+  void assignPlayer2(AbstractPlayer player) {
+    player2 = player;
+  }
+
+  @override
+  void assignObserver(Observer o) {
+    observers.add(o);
+  }
+
+  @override
+  void assignBoard(Board board) {
+    this.board = board;
+  }
+
+  @override
+  Board getBoard() {
+    return board!;
+  }
+
+  @override
+  AbstractPlayer getPlayer1() {
+    return player1!;
+  }
+
+  @override
+  AbstractPlayer getPlayer2() {
+    return player2!;
+  }
+
+  @override
   bool getIsFinish() {
     return _isFinish;
   }

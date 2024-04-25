@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:gwent/controller/abstract_controller.dart';
 
 abstract class AbstractStateController {
@@ -9,6 +10,7 @@ abstract class AbstractStateController {
     controller!.setState(state);
   }
   void handle();
+  Widget getWidget();
   void _error(){
     throw Exception("Wrong state");
   }
